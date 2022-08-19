@@ -1,5 +1,14 @@
 import pyshorteners
 from tkinter import *
+import pyperclip
+
+
+
+def shorten():
+    type_tiny = pyshorteners.Shortener()
+    short_url = type_tiny.tinyurl.short(long_url_input.get())
+    shorted_url.insert(0, short_url)
+    print("The Shortened URL is: " + short_url)
 
 # Window Setup
 window = Tk()
@@ -24,12 +33,14 @@ short_url_label.grid(column=0, row=3)
 shorted_url = Entry(width=25)
 shorted_url.grid(column=1, row=3)
 
+# Shorted Button
+shorten_button = Button(text="Shorten", width=20, command=shorten)
+shorten_button.grid(column=1, row=4, columnspan=2)
+
+# copy_button = Button(text="Copy", width=20, command=copy)
+# copy_button.grid(column=1, row=5, columnspan=2)
+
+
+
 window.mainloop()
-
-long_url = input("Enter the URL to shorten: ")
-print(long_url)
-
-type_tiny = pyshorteners.Shortener()
-short_url = type_tiny.tinyurl.short(long_url)
-print("The Shortened URL is: " + short_url)
 
