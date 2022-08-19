@@ -6,9 +6,13 @@ import pyperclip
 
 def shorten():
     type_tiny = pyshorteners.Shortener()
+    global short_url
     short_url = type_tiny.tinyurl.short(long_url_input.get())
     shorted_url.insert(0, short_url)
     print("The Shortened URL is: " + short_url)
+
+def copy():
+    pyperclip.copy(short_url)
 
 # Window Setup
 window = Tk()
@@ -37,8 +41,8 @@ shorted_url.grid(column=1, row=3)
 shorten_button = Button(text="Shorten", width=20, command=shorten)
 shorten_button.grid(column=1, row=4, columnspan=2)
 
-# copy_button = Button(text="Copy", width=20, command=copy)
-# copy_button.grid(column=1, row=5, columnspan=2)
+copy_button = Button(text="Copy", width=20, command=copy)
+copy_button.grid(column=1, row=5, columnspan=2)
 
 
 
