@@ -3,7 +3,6 @@ from tkinter import *
 import pyperclip
 
 
-
 def shorten():
     type_tiny = pyshorteners.Shortener()
     global short_url
@@ -11,28 +10,31 @@ def shorten():
     shorted_url.insert(0, short_url)
     print("The Shortened URL is: " + short_url)
 
+
 def copy():
     pyperclip.copy(short_url)
 
 # Window Setup
+
+
 window = Tk()
 window.title("URL Shortener")
-window.config(padx=30, pady=30)
+window.config(padx=30, pady=30, bg="white")
 
 # Canvas Setup
-canvas = Canvas(width=200, height=200)
+canvas = Canvas(width=200, height=200, bg="white")
 logo_img = PhotoImage(file="cut.png")
 canvas.create_image(100, 90, image=logo_img)
 canvas.grid(column=1, row=0)
 
 # Long URL Input
-long_url_label = Label(text="URL: ")
+long_url_label = Label(text="URL: ", bg="white", font=("Ariel", 10, "bold"))
 long_url_label.grid(column=0, row=1)
 long_url_input = Entry(width=25)
 long_url_input.grid(column=1, row=1)
 
 # Short URL input
-short_url_label = Label(text="Shortened URL: ")
+short_url_label = Label(text="Shortened URL:", bg="white", font=("Ariel", 10, "bold"))
 short_url_label.grid(column=0, row=3)
 shorted_url = Entry(width=25)
 shorted_url.grid(column=1, row=3)
@@ -45,6 +47,4 @@ copy_button = Button(text="Copy", width=20, command=copy)
 copy_button.grid(column=1, row=5, columnspan=2)
 
 
-
 window.mainloop()
-
